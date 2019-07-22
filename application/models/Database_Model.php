@@ -166,11 +166,10 @@ class Database_Model extends CI_Model
 
     public function calibrateDevice($device_id, $suhu, $kelembaban) {
         $query = "INSERT INTO device (device_id, suhu_kalibrasi, kelembaban_kalibrasi, tanggal_perubahan) 
-                        VALUES (?, ?, ?, CURRENT_TIMESTAMP) 
-                            ON DUPLICATE KEY UPDATE 
+                        VALUES (?, ?, ?, CURRENT_TIMESTAMP) ON DUPLICATE KEY UPDATE 
                                     suhu_kalibrasi=VALUES(suhu_kalibrasi),
                                     kelembaban_kalibrasi=VALUES(kelembaban_kalibrasi), 
-                                    tanggal_perubahan=VALUES(CURRENT_TIMESTAMP)";
+                                    tanggal_perubahan=CURRENT_TIMESTAMP";
         $result = $this->db->query($query, array($device_id, $suhu, $kelembaban));
         return $result;
     }
@@ -190,8 +189,13 @@ class Database_Model extends CI_Model
             $infos['kelembaban_kalibrasi'] = 0;
             $infos['tanggal_perubahan'] = "-";
         }
-
         return $infos;
+    }
+
+    public function removeCalibrateDevice($device_id) {
+        $query = "DELETE FROM device WHERE device_id = ?;";
+        $result = $this->db->query($query, array($device_id));
+        return $result;
     }
 
     public function getAdmin($username) {

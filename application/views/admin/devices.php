@@ -246,29 +246,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     // Set new default font family and font color to mimic Bootstrap's default styling
     Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
     Chart.defaults.global.defaultFontColor = '#292b2c';
+
+    var data = {
+        labels: [<?php foreach ($monitoring_data as $data) { echo "\"" . $data['monitoring_date'] . "\",";}?>],
+        datasets: [{
+            label: "Suhu (°C)",
+            backgroundColor: "rgba(2,117,216,0)",
+            borderColor: "rgba(2,117,216,1)",
+            pointBackgroundColor: "rgba(2,117,216,1)",
+            data: [<?php foreach ($monitoring_data as $data) { echo "\"" . $data['suhu_data'] . "\",";}?>],
+        }, {
+            label: "Kelembaban (%)",
+            backgroundColor: "rgba(240,10,10,0)",
+            borderColor: "rgba(240,10,10,1)",
+            pointBackgroundColor: "rgba(240,10,10,1)",
+            data: [<?php foreach ($monitoring_data as $data) { echo "\"" . $data['kelembaban_data'] . "\",";}?>],
+        }],
+    };
+
     var ctx = document.getElementById("LineChart");
     var myLineChart = new Chart(ctx, {
         type: 'line',
-        data: {
-            labels: [<?php foreach ($monitoring_data as $data) { echo "\"" . $data['monitoring_date'] . "\",";}?>],
-            datasets: [{
-                label: "Suhu (°C)",
-                backgroundColor: "rgba(2,117,216,0)",
-                borderColor: "rgba(2,117,216,1)",
-                pointBackgroundColor: "rgba(2,117,216,1)",
-                data: [<?php foreach ($monitoring_data as $data) { echo "\"" . $data['suhu_data'] . "\",";}?>],
-            }, {
-                label: "Kelembaban (%)",
-                backgroundColor: "rgba(240,10,10,0)",
-                borderColor: "rgba(240,10,10,1)",
-                pointBackgroundColor: "rgba(240,10,10,1)",
-                data: [<?php foreach ($monitoring_data as $data) { echo "\"" . $data['kelembaban_data'] . "\",";}?>],
-            }],
-        },
-        options: { }
+        data: data,
     });
-
-    rgba
 </script>
 
 </body>
