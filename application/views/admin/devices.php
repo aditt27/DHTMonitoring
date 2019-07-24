@@ -227,6 +227,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- /#wrapper -->
 
 <?php $this->load->view("admin/_partials/scrolltop.php") ?>
+<?php $this->load->view("admin/_partials/changepassmodal.php") ?>
 <?php $this->load->view("admin/_partials/deletedatamodal.php") ?>
 <?php $this->load->view("admin/_partials/kalibrasimodal.php") ?>
 <?php $this->load->view("admin/_partials/js.php") ?>

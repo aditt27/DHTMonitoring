@@ -216,4 +216,10 @@ class Database_Model extends CI_Model
         return $result;
     }
 
+    public function changePassword($username, $password) {
+        $query = "UPDATE admin SET password=? WHERE username=?";
+        $result = $this->db->query($query, array($password, $username));
+        return $result;
+    }
+
 }

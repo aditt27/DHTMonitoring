@@ -33,12 +33,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </form>
       </div>
     </div>
-      <?php if($this->session->flashdata('wrong'))
+      <?php if($this->session->flashdata('wrong')) {
           echo "
             <div class=\"card card-login bg-danger mx-auto mt-5\">
                 <div class=\"card-body text-white\">Username/Password Salah</div>
             </div>
-          "
+          ";
+      } if($this->session->flashdata('passupdate')) {
+          echo "
+            <div class=\"card card-login bg-success mx-auto mt-5\">
+                <div class=\"card-body text-white\">Ganti password berhasil. Silahkan login kembali</div>
+            </div>
+          ";
+      }
       ?>
 
   </div>

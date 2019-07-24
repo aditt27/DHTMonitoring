@@ -33,11 +33,8 @@ class User extends CI_Controller
         $pass = $_POST['password'];
 
         if(isset($referer) && isset($uname) && isset($pass)) {
-            echo 1;
             if($referer == $check_ref) {
-                echo 2;
                 $getUser = $this->Database_Model->getAdmin($uname);
-
                 if($uname == $getUser['username'] && $pass == $getUser['password']) {
                     $data_session = array(
                         'user' => $uname,
@@ -62,5 +59,38 @@ class User extends CI_Controller
     {
         $this->session->sess_destroy();
         redirect(site_url());
+    }
+
+    public function chgps() {
+        $referer = parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST);
+        $check_ref = $_SERVER['HTTP_HOST'];
+        $passlama = $_POST['passlama'];
+        $passbaru = $_POST['passbaru'];
+        $session = $_SESSION;
+
+        if(isset($referer) && isset($passlama) && isset($passbaru) && isset($session['user'])) {
+            if($referer == $check_ref) {
+                $getUser = $this->Database_Model->getAdmin($session['user']);
+                if($getUser['username'] == $session['user'] && $getUser['password'] == $passlama) {
+                    $getUser = $this->Database_Model->changePassword($session['user'], $passbaru);
+                    $this->session->unset_userdata(array('user', 'status'));
+                    $this->session->set_flashdata('passupdate', true);
+                    redirect(site_url('login/'));
+                } else {
+                    var_dump($getUser['username']);
+                    var_dump($session['user']);
+                    var_dump($getUser['password']);
+                    var_dump($passlama);
+                }
+            } else {
+                var_dump($referer);
+                var_dump($check_ref);
+            }
+        } else {
+            var_dump($referer);
+            var_dump($passlama);
+            var_dump($passbaru);
+            var_dump($session['user']);
+        }
     }
 }

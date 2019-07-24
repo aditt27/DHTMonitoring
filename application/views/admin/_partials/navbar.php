@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </a>
             <?php if(isset($_SESSION['user'])) { ?>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="#">Change Password</a>
+                    <a data-toggle="modal" data-target="#ChangePassModal" href="#" class="dropdown-item">Change Password</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="<?php echo site_url('logout/')?>"">Logout</a>
                 </div>
