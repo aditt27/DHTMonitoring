@@ -70,8 +70,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <!-- /.container-fluid -->
 
-        <?php var_dump($_SERVER) ?>
-
         <!-- Sticky Footer -->
         <?php $this->load->view("admin/_partials/footer.php") ?>
 
