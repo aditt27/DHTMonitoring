@@ -29,6 +29,7 @@ class dht extends REST_Controller
     // insert new data to database
     function index_post() {
         $device_id = $this->post('device_id');
+        $device_id = str_replace(' ', '_', $device_id);
         $suhu_data = $this->post('suhu_data');
         $kelembaban_data = $this->post('kelembaban_data');
 
