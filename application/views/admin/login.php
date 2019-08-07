@@ -12,6 +12,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="bg-dark">
 
   <div class="container">
+      <br>
+      <h1 class="text-white text-center"><?php echo SITE_NAME?></h1>
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Login</div>
       <div class="card-body">

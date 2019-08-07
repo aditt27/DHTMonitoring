@@ -77,20 +77,13 @@ class User extends CI_Controller
                     $this->session->set_flashdata('passupdate', true);
                     redirect(site_url('login/'));
                 } else {
-                    var_dump($getUser['username']);
-                    var_dump($session['user']);
-                    var_dump($getUser['password']);
-                    var_dump($passlama);
+                    echo "Username atau password tidak sesuai. Silahkan coba lagi";
                 }
             } else {
-                var_dump($referer);
-                var_dump($check_ref);
+                redirect(site_url());
             }
         } else {
-            var_dump($referer);
-            var_dump($passlama);
-            var_dump($passbaru);
-            var_dump($session['user']);
+            redirect(site_url());
         }
     }
 }

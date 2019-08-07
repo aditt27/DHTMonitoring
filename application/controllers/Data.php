@@ -37,7 +37,7 @@ class Data extends CI_Controller
             $check_ref = site_url('devices/') . $param;
             if($referer == $check_ref) {
                 $this->Database_Model->deleteDevice($param);
-                $this->Database_Model->removeCalibrateDevice($param);
+                //$this->Database_Model->removeCalibrateDevice($param);
                 redirect(site_url());
             } else {
                 show_404();

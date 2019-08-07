@@ -91,4 +91,4 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 |
 */
 
-define('SITE_NAME', 'SinA615 Temp&Humid Monitoring');
+define('SITE_NAME', 'IoT Temp & Humidity Monitoring SINA615');
