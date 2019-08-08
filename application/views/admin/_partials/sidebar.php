@@ -21,7 +21,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         echo "<a class=\"nav-link\" href=\"";
         echo site_url('devices/' . $device);
         echo "\">";
-        echo "<i class=\"fas fa-fw fa-box\"></i><span>&nbsp";
         echo $device;
         echo "</span></a></li>";
     }?>

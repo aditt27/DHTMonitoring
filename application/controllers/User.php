@@ -38,7 +38,8 @@ class User extends CI_Controller
                 if($uname == $getUser['username'] && $pass == $getUser['password']) {
                     $data_session = array(
                         'user' => $uname,
-                        'status' => "sudah login"
+                        'status' => "sudah login",
+                        'admin' => $getUser['admin']
                     );
                     $this->session->set_userdata($data_session);
                     $this->Database_Model->updateAdminLogin($uname);

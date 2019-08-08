@@ -75,7 +75,7 @@ class Database_Model extends CI_Model
     }
 
     public function listAllDevices() {
-        $query = "SELECT DISTINCT device_id FROM monitoring";
+        $query = "SELECT DISTINCT device_id FROM monitoring ORDER BY device_id ASC";
         $result = $this->db->query($query);
 
         $infos = array();
@@ -199,7 +199,7 @@ class Database_Model extends CI_Model
     }
 
     public function getAdmin($username) {
-        $query = "SELECT username, password, role FROM admin WHERE username=?";
+        $query = "SELECT username, password, admin FROM user WHERE username=?";
         $result = $this->db->query($query, array($username));
 
         $infos= array();
@@ -211,13 +211,13 @@ class Database_Model extends CI_Model
     }
 
     public function updateAdminLogin($username) {
-        $query = "UPDATE admin SET last_login=CURRENT_TIMESTAMP WHERE username=?";
+        $query = "UPDATE user SET last_login=CURRENT_TIMESTAMP WHERE username=?";
         $result = $this->db->query($query, array($username));
         return $result;
     }
 
     public function changePassword($username, $password) {
-        $query = "UPDATE admin SET password=? WHERE username=?";
+        $query = "UPDATE user SET password=? WHERE username=?";
         $result = $this->db->query($query, array($password, $username));
         return $result;
     }

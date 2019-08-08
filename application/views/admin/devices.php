@@ -201,7 +201,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
 
-            <?php if(isset($_SESSION['user'])) { ?>
+            <?php if(isset($_SESSION['user']) && $_SESSION['admin']==true) { ?>
             <div class="card mb-3">
                 <div class="card-header bg-info text-white">
                     <i class="fas fa-wrench"></i>
